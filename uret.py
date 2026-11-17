@@ -10,9 +10,10 @@ vcf = "\r\n".join([
     "EMAIL;TYPE=INTERNET,WORK:hasan.goktas@cerkezkoy.bel.tr",
     "END:VCARD",
 ]) + "\r\n"
-open("hasan-goktas.vcf", "w", encoding="utf-8", newline="").write(vcf)
-# eci=True: QR'ın içine "bu metin UTF-8" işareti koyar; okuyucu tahmin yürütmez
-q = segno.make(vcf, encoding="utf-8", eci=True, error="m", micro=False)
+open("hasan.vcf", "w", encoding="utf-8", newline="").write(vcf)
+URL = "https://hasangoktasx.github.io/kart/hasan.vcf"
+# QR sadece adresi taşır; kişi dosyasını telefonun rehber uygulaması okur
+q = segno.make(URL, error="q", micro=False)
 with open("hasan-goktas-qr.png", "wb") as f:
     q.save(f, kind="png", scale=24, border=4)
 with open("hasan-goktas-qr.svg", "wb") as f:
